@@ -2,7 +2,7 @@
 
 A simple Python website for investigating differences between a purchase register and GSTR-2B. It links discrepancies to uploaded evidence, checks a supplied later-period GSTR-2B, lets a person correct extracted fields, and optionally sends every discrepancy case to NVIDIA Nemotron 3 Ultra through OpenRouter. It does not determine ITC eligibility or submit GST returns.
 
-The four-page project brief is available as an editable [Word report](report/ITC_Discrepancy_Investigation_Report.docx) and a [PDF preview](report/ITC_Discrepancy_Investigation_Report.pdf). Replace the public repository and demo placeholders before submitting it.
+The four-page project brief is available as a [PDF preview](report/ITC_Discrepancy_Investigation_Report.pdf).
 
 ## Architecture
 

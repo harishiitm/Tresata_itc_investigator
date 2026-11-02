@@ -1,0 +1,11 @@
+test_id,invoice_reference,scenario,expected_classification,expected_observation
+1,INV-001,Exact match,Matched,"Same supplier GSTIN, invoice number, date and amounts."
+2,INV-002,Taxable value and tax mismatch,Mismatch,Difference has no supporting note in this package; reason must remain unresolved.
+3,INV-003,Missing in October GSTR-2B,Purchase-only,"Present in Purchase Register, absent from October GSTR-2B."
+4,INV-004,Missing in Purchase Register,GSTR-2B-only,"Present in October GSTR-2B, absent from Purchase Register."
+5,INV-005,Duplicate in Purchase Register,Duplicate,Two identical purchase rows; one GSTR-2B row.
+6,INV/006 vs INV-006,Invoice number formatting variation,Potential normalized match,Slash versus hyphen; retain raw values and flag normalized match.
+7,INV-007,Supplier GSTIN mismatch,GSTIN mismatch,Invoice number matches but GSTIN differs.
+8,INV-008,Tax amount mismatch,Tax mismatch,"Taxable value matches; total GST differs (₹1,800 versus ₹1,600)."
+9,INV-009,Subsequent-period reporting,Cross-period,Absent from October but present in optional November GSTR-2B.
+10,INV-010,Insufficient evidence,Unresolved missing invoice,Absent from October and November statements; no explanatory evidence supplied.

@@ -1,0 +1,2 @@
+tax_period,supplier_name,supplier_gstin,invoice_number,invoice_date,document_type,taxable_value_inr,igst_inr,cgst_inr,sgst_inr,notes
+2026-11,Orbit Systems,29ORBIT1234R1Z6,INV-009,2026-10-18,Invoice,30000,5400,0,0,Illustrative subsequent-period reporting.

@@ -1,0 +1,1061 @@
+{
+  "matched": 1,
+  "purchase_count": 10,
+  "gstr_count": 7,
+  "case_count": 9,
+  "categories": {
+    "Value or tax mismatch": 2,
+    "Missing in GSTR-2B": 3,
+    "Duplicate entry": 1,
+    "Invoice number formatting difference": 1,
+    "GSTIN mismatch": 1,
+    "Missing in purchase register": 1
+  },
+  "cases": [
+    {
+      "id": "77296213-2bef-4d65-8489-21f8b3ddf07b",
+      "invoice_number": "INV-002",
+      "supplier_gstin": "27XYZAB5678C1Z2",
+      "supplier_name": "XYZ Electronics",
+      "invoice_date": "2026-10-05",
+      "category": "Value or tax mismatch",
+      "differences": [
+        "Taxable value: purchase ₹20000.00 vs GSTR-2B ₹18000.00",
+        "CGST: purchase ₹1800.00 vs GSTR-2B ₹1620.00",
+        "SGST: purchase ₹1800.00 vs GSTR-2B ₹1620.00"
+      ],
+      "purchase_record": {
+        "record_id": "a32e749e-0bae-4ea5-b460-cd6c7e675fe5",
+        "human_edits": [],
+        "supplier_gstin": "27XYZAB5678C1Z2",
+        "supplier_name": "XYZ Electronics",
+        "invoice_number": "INV-002",
+        "invoice_key": "INV002",
+        "invoice_date": "2026-10-05",
+        "taxable_value": "20000.00",
+        "igst": "0.00",
+        "cgst": "1800.00",
+        "sgst": "1800.00",
+        "source": "00_purchase_register_oct_2026.csv (CSV, row 3)",
+        "side": "purchase"
+      },
+      "gstr_record": {
+        "record_id": "7c765a98-4248-497a-88f7-d7636a6ff1e5",
+        "human_edits": [],
+        "supplier_gstin": "27XYZAB5678C1Z2",
+        "supplier_name": "XYZ Electronics",
+        "invoice_number": "INV-002",
+        "invoice_key": "INV002",
+        "invoice_date": "2026-10-05",
+        "taxable_value": "18000.00",
+        "igst": "0.00",
+        "cgst": "1620.00",
+        "sgst": "1620.00",
+        "source": "01_gstr2b_oct_2026.csv (CSV, row 3)",
+        "side": "gstr"
+      },
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "29ABCDE1234F1Z5 INV-001 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 27XYZAB5678C1Z2 INV-002 taxable 20000.00 IGST 0.00 CGST 1800.00 SGST 1800.00 33PQRST1234A1Z6 INV-003 taxable 15000.00 IGST 2700.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.0"
+        }
+      ],
+      "finding": "The records differ, and the supplied evidence does not establish the cause.",
+      "confidence": "Unresolved",
+      "recommended_action": "Compare the original invoice, any credit or debit notes, and supplier amendments.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "a32e749e-0bae-4ea5-b460-cd6c7e675fe5",
+        "7c765a98-4248-497a-88f7-d7636a6ff1e5"
+      ],
+      "ai_analysis": {
+        "explanation": "The purchase register (E1) and the synthetic reconciliation dataset (E3) both record invoice INV-002 from supplier GSTIN 27XYZAB5678C1Z2 with a taxable value of ₹20,000, CGST ₹1,800 and SGST ₹1,800. The GSTR-2B data (E2) for the same invoice shows a taxable value of ₹18,000, CGST ₹1,620 and SGST ₹1,620. The differences are ₹2,000 in taxable value and ₹180 each in CGST and SGST. The supplied evidence does not indicate why the GSTR-2B figures are lower (e.g., supplier amendment, data entry error, timing difference, or omission).",
+        "assessment": "unresolved",
+        "recommended_action": "Contact the supplier (GSTIN 27XYZAB5678C1Z2) to confirm the correct invoice details and check whether a debit/credit note or amendment was filed. Verify the GSTR-2B download date and compare with the supplier's GSTR-1 filing. If necessary, request the supplier to rectify the discrepancy in their next return.",
+        "evidence_refs": [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "00_purchase_register_oct_2026.csv (CSV, row 3)",
+            "text": "Purchase register (extracted): GSTIN 27XYZAB5678C1Z2; invoice INV-002; date 2026-10-05; taxable 20000.00; IGST 0.00; CGST 1800.00; SGST 1800.00."
+          },
+          {
+            "id": "E2",
+            "source": "01_gstr2b_oct_2026.csv (CSV, row 3)",
+            "text": "GSTR-2B (extracted): GSTIN 27XYZAB5678C1Z2; invoice INV-002; date 2026-10-05; taxable 18000.00; IGST 0.00; CGST 1620.00; SGST 1620.00."
+          },
+          {
+            "id": "E3",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "29ABCDE1234F1Z5 INV-001 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 27XYZAB5678C1Z2 INV-002 taxable 20000.00 IGST 0.00 CGST 1800.00 SGST 1800.00 33PQRST1234A1Z6 INV-003 taxable 15000.00 IGST 2700.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.0"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:04:52.364107+00:00"
+      }
+    },
+    {
+      "id": "1e0e35d4-50ba-4737-8ea1-8b342339217c",
+      "invoice_number": "INV-003",
+      "supplier_gstin": "33PQRST1234A1Z6",
+      "supplier_name": "PQR Industries",
+      "invoice_date": "2026-10-07",
+      "category": "Missing in GSTR-2B",
+      "differences": [
+        "No matching GSTIN + invoice number in current GSTR-2B"
+      ],
+      "purchase_record": {
+        "record_id": "86f5b6ff-12cc-4e20-89db-9a2dcdf60670",
+        "human_edits": [],
+        "supplier_gstin": "33PQRST1234A1Z6",
+        "supplier_name": "PQR Industries",
+        "invoice_number": "INV-003",
+        "invoice_key": "INV003",
+        "invoice_date": "2026-10-07",
+        "taxable_value": "15000.00",
+        "igst": "2700.00",
+        "cgst": "0.00",
+        "sgst": "0.00",
+        "source": "00_purchase_register_oct_2026.csv (CSV, row 4)",
+        "side": "purchase"
+      },
+      "gstr_record": null,
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "900.00 27XYZAB5678C1Z2 INV-002 taxable 20000.00 IGST 0.00 CGST 1800.00 SGST 1800.00 33PQRST1234A1Z6 INV-003 taxable 15000.00 IGST 2700.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 C"
+        }
+      ],
+      "finding": "No corresponding entry was found in the supplied GSTR-2B statements. The cause cannot be established from the available records.",
+      "confidence": "Unresolved",
+      "recommended_action": "Verify the invoice and GSTIN with the supplier; check subsequent GSTR-2B statements.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "86f5b6ff-12cc-4e20-89db-9a2dcdf60670"
+      ],
+      "ai_analysis": {
+        "explanation": "The purchase register records an invoice INV-003 from GSTIN 33PQRST1234A1Z6 dated 2026-10-07 with taxable value 15000 and IGST 2700 (E1). The supplied GSTR-2B statements for the period do not contain a matching entry according to the deterministic finding. The synthetic GST reconciliation dataset (E2) includes a line for GSTIN 33PQRST1234A1Z6 INV-003 with the same values, but it is not confirmed to be the actual GSTR-2B data. Since the actual GSTR-2B statements are not among the provided sources, the reason for the missing entry cannot be established from the available records.",
+        "assessment": "unresolved",
+        "recommended_action": "Obtain the official GSTR-2B statements for October 2026 and verify whether the supplier (GSTIN 33PQRST1234A1Z6) has uploaded invoice INV-003. If missing, follow up with the supplier to ensure timely filing.",
+        "evidence_refs": [
+          "E1",
+          "E2"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "00_purchase_register_oct_2026.csv (CSV, row 4)",
+            "text": "Purchase register (extracted): GSTIN 33PQRST1234A1Z6; invoice INV-003; date 2026-10-07; taxable 15000.00; IGST 2700.00; CGST 0.00; SGST 0.00."
+          },
+          {
+            "id": "E2",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "900.00 27XYZAB5678C1Z2 INV-002 taxable 20000.00 IGST 0.00 CGST 1800.00 SGST 1800.00 33PQRST1234A1Z6 INV-003 taxable 15000.00 IGST 2700.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 C"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:05:21.138672+00:00"
+      }
+    },
+    {
+      "id": "7f024caa-2c5d-4852-ac77-63d0fc42e1a0",
+      "invoice_number": "INV-005",
+      "supplier_gstin": "29LMNOP1234B1Z4",
+      "supplier_name": "LMN Supplies",
+      "invoice_date": "2026-10-09",
+      "category": "Duplicate entry",
+      "differences": [
+        "00_purchase_register_oct_2026.csv (CSV, row 5)",
+        "00_purchase_register_oct_2026.csv (CSV, row 6)"
+      ],
+      "purchase_record": {
+        "record_id": "cd43c105-4029-4bde-9764-221fa6e97904",
+        "human_edits": [],
+        "supplier_gstin": "29LMNOP1234B1Z4",
+        "supplier_name": "LMN Supplies",
+        "invoice_number": "INV-005",
+        "invoice_key": "INV005",
+        "invoice_date": "2026-10-09",
+        "taxable_value": "25000.00",
+        "igst": "4500.00",
+        "cgst": "0.00",
+        "sgst": "0.00",
+        "source": "00_purchase_register_oct_2026.csv (CSV, row 5)",
+        "side": "purchase"
+      },
+      "gstr_record": null,
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "T 1800.00 33PQRST1234A1Z6 INV-003 taxable 15000.00 IGST 2700.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00 27NORTH1234K1Z8 INV/006 taxable 12000.00 IGST 0.00 CGST"
+        }
+      ],
+      "finding": "The same GSTIN and normalized invoice number occurs more than once in one source. Confirm whether these are duplicate postings or distinct amendments.",
+      "confidence": "High (duplicate key)",
+      "recommended_action": "Inspect the original invoice and amendment history before correcting the register.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "cd43c105-4029-4bde-9764-221fa6e97904",
+        "5ea411ce-a8b9-4bba-85bd-e3c71e032f54"
+      ],
+      "ai_analysis": {
+        "explanation": "The purchase register (E1) contains a single entry for GSTIN 29LMNOP1234B1Z4, invoice INV-005 dated 2026-10-09 with taxable value 25000 and IGST 4500. The GST reconciliation dataset (E2) lists the same GSTIN and invoice number twice with identical taxable and tax amounts. This indicates a duplicate occurrence in the reconciliation dataset, but the purchase register does not show a duplicate. Without additional information such as amendment flags, version numbers, or timestamps, it cannot be determined whether the two lines in the reconciliation dataset represent duplicate postings or distinct amendments (e.g., revised invoices).",
+        "assessment": "unresolved",
+        "recommended_action": "Obtain the original supplier invoices and any amendment records for GSTIN 29LMNOP1234B1Z4, invoice INV-005. Compare the reconciliation dataset entries with the purchase register and supplier communications to identify if one entry is an amendment. If no amendment exists, treat the duplicate in the reconciliation dataset as a posting error and correct the reconciliation.",
+        "evidence_refs": [
+          "E1",
+          "E2"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "00_purchase_register_oct_2026.csv (CSV, row 5)",
+            "text": "Purchase register (extracted): GSTIN 29LMNOP1234B1Z4; invoice INV-005; date 2026-10-09; taxable 25000.00; IGST 4500.00; CGST 0.00; SGST 0.00."
+          },
+          {
+            "id": "E2",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "T 1800.00 33PQRST1234A1Z6 INV-003 taxable 15000.00 IGST 2700.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00 27NORTH1234K1Z8 INV/006 taxable 12000.00 IGST 0.00 CGST"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:05:34.598036+00:00"
+      }
+    },
+    {
+      "id": "5e2c4d01-67e3-4b8c-9cbe-7256d4d4068a",
+      "invoice_number": "INV/006",
+      "supplier_gstin": "27NORTH1234K1Z8",
+      "supplier_name": "Northstar Components",
+      "invoice_date": "2026-10-11",
+      "category": "Invoice number formatting difference",
+      "differences": [
+        "Invoice number formatting: purchase INV/006 vs GSTR-2B INV-006"
+      ],
+      "purchase_record": {
+        "record_id": "7b132a54-542e-45b1-a6ec-876e1d2b5016",
+        "human_edits": [],
+        "supplier_gstin": "27NORTH1234K1Z8",
+        "supplier_name": "Northstar Components",
+        "invoice_number": "INV/006",
+        "invoice_key": "INV006",
+        "invoice_date": "2026-10-11",
+        "taxable_value": "12000.00",
+        "igst": "0.00",
+        "cgst": "1080.00",
+        "sgst": "1080.00",
+        "source": "00_purchase_register_oct_2026.csv (CSV, row 7)",
+        "side": "purchase"
+      },
+      "gstr_record": {
+        "record_id": "f5b3f6dc-b828-41f7-8eea-29f09e5693cd",
+        "human_edits": [],
+        "supplier_gstin": "27NORTH1234K1Z8",
+        "supplier_name": "Northstar Components",
+        "invoice_number": "INV-006",
+        "invoice_key": "INV006",
+        "invoice_date": "2026-10-11",
+        "taxable_value": "12000.00",
+        "igst": "0.00",
+        "cgst": "1080.00",
+        "sgst": "1080.00",
+        "source": "01_gstr2b_oct_2026.csv (CSV, row 5)",
+        "side": "gstr"
+      },
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00 27NORTH1234K1Z8 INV/006 taxable 12000.00 IGST 0.00 CGST 1080.00 SGST 1080.00 29DELTA1234P1Z2 INV-007 taxable 8000.00 IGST 1440.00 CGST 0.00 SGST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CG"
+        }
+      ],
+      "finding": "The invoice numbers match only after punctuation and case normalization. Verify that both entries refer to the same original invoice.",
+      "confidence": "Medium (normalized match)",
+      "recommended_action": "Compare the source invoice numbers and confirm the match before closing this case.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "7b132a54-542e-45b1-a6ec-876e1d2b5016",
+        "f5b3f6dc-b828-41f7-8eea-29f09e5693cd"
+      ],
+      "ai_analysis": {
+        "explanation": "The purchase register shows invoice number INV/006 (E1) while GSTR-2B shows INV-006 (E2). Both records share identical GSTIN (27NORTH1234K1Z8), invoice date (2026-10-11), taxable value (12000.00), IGST (0.00), CGST (1080.00), and SGST (1080.00). The synthetic reconciliation dataset (E3) also lists the same GSTIN with INV/006 and matching tax details. The only discrepancy is the separator character (slash vs hyphen) in the invoice number, which is a common formatting variation between accounting systems and the GST portal.",
+        "assessment": "supported",
+        "recommended_action": "Confirm with the supplier that INV/006 and INV-006 refer to the same original invoice; if confirmed, no further action needed as the difference is purely formatting.",
+        "evidence_refs": [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "00_purchase_register_oct_2026.csv (CSV, row 7)",
+            "text": "Purchase register (extracted): GSTIN 27NORTH1234K1Z8; invoice INV/006; date 2026-10-11; taxable 12000.00; IGST 0.00; CGST 1080.00; SGST 1080.00."
+          },
+          {
+            "id": "E2",
+            "source": "01_gstr2b_oct_2026.csv (CSV, row 5)",
+            "text": "GSTR-2B (extracted): GSTIN 27NORTH1234K1Z8; invoice INV-006; date 2026-10-11; taxable 12000.00; IGST 0.00; CGST 1080.00; SGST 1080.00."
+          },
+          {
+            "id": "E3",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "SGST 0.00 29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00 27NORTH1234K1Z8 INV/006 taxable 12000.00 IGST 0.00 CGST 1080.00 SGST 1080.00 29DELTA1234P1Z2 INV-007 taxable 8000.00 IGST 1440.00 CGST 0.00 SGST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CG"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:05:54.930979+00:00"
+      }
+    },
+    {
+      "id": "11e03169-7718-4140-bc53-1d0c6e236a52",
+      "invoice_number": "INV-007",
+      "supplier_gstin": "29DELTA1234P1Z2",
+      "supplier_name": "Delta Tools",
+      "invoice_date": "2026-10-13",
+      "category": "GSTIN mismatch",
+      "differences": [
+        "GSTIN: purchase 29DELTA1234P1Z2 vs GSTR-2B 27DELTA1234P1Z2"
+      ],
+      "purchase_record": {
+        "record_id": "0d18e3fd-90bc-4ecc-a244-7e03318a7f2c",
+        "human_edits": [],
+        "supplier_gstin": "29DELTA1234P1Z2",
+        "supplier_name": "Delta Tools",
+        "invoice_number": "INV-007",
+        "invoice_key": "INV007",
+        "invoice_date": "2026-10-13",
+        "taxable_value": "8000.00",
+        "igst": "1440.00",
+        "cgst": "0.00",
+        "sgst": "0.00",
+        "source": "00_purchase_register_oct_2026.csv (CSV, row 8)",
+        "side": "purchase"
+      },
+      "gstr_record": {
+        "record_id": "ae6cb17e-27ca-4675-a269-3d12854d3b95",
+        "human_edits": [],
+        "supplier_gstin": "27DELTA1234P1Z2",
+        "supplier_name": "Delta Tools",
+        "invoice_number": "INV-007",
+        "invoice_key": "INV007",
+        "invoice_date": "2026-10-13",
+        "taxable_value": "8000.00",
+        "igst": "1440.00",
+        "cgst": "0.00",
+        "sgst": "0.00",
+        "source": "01_gstr2b_oct_2026.csv (CSV, row 6)",
+        "side": "gstr"
+      },
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "T 0.00 27NORTH1234K1Z8 INV/006 taxable 12000.00 IGST 0.00 CGST 1080.00 SGST 1080.00 29DELTA1234P1Z2 INV-007 taxable 8000.00 IGST 1440.00 CGST 0.00 SGST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 C"
+        }
+      ],
+      "finding": "The invoice number matches, but supplier GSTIN differs. This requires manual verification.",
+      "confidence": "High (field mismatch)",
+      "recommended_action": "Check the original invoice and both GSTINs; correct the source only after review.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "0d18e3fd-90bc-4ecc-a244-7e03318a7f2c",
+        "ae6cb17e-27ca-4675-a269-3d12854d3b95"
+      ],
+      "ai_analysis": {
+        "explanation": "The purchase register records the supplier GSTIN as 29DELTA1234P1Z2 for invoice INV-007 dated 2026-10-13 (E1). The GSTR‑2B data for the same invoice shows a different supplier GSTIN, 27DELTA1234P1Z2 (E2). The invoice number, date, taxable value and tax amounts match across both sources, confirming the same transaction is being compared. The reconciliation dataset also lists the same invoice with GSTIN 29DELTA1234P1Z2 (E3), reinforcing the purchase register value. However, the sources do not indicate why the GSTIN differs in GSTR‑2B (e.g., data entry error, supplier GSTIN change, or mis‑reporting).",
+        "assessment": "unresolved",
+        "recommended_action": "Perform manual verification: contact the supplier to confirm the correct GSTIN, check the supplier’s GST registration portal, and review the original invoice copy. Update either the purchase register or the GSTR‑2B filing accordingly after confirmation.",
+        "evidence_refs": [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "00_purchase_register_oct_2026.csv (CSV, row 8)",
+            "text": "Purchase register (extracted): GSTIN 29DELTA1234P1Z2; invoice INV-007; date 2026-10-13; taxable 8000.00; IGST 1440.00; CGST 0.00; SGST 0.00."
+          },
+          {
+            "id": "E2",
+            "source": "01_gstr2b_oct_2026.csv (CSV, row 6)",
+            "text": "GSTR-2B (extracted): GSTIN 27DELTA1234P1Z2; invoice INV-007; date 2026-10-13; taxable 8000.00; IGST 1440.00; CGST 0.00; SGST 0.00."
+          },
+          {
+            "id": "E3",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "T 0.00 27NORTH1234K1Z8 INV/006 taxable 12000.00 IGST 0.00 CGST 1080.00 SGST 1080.00 29DELTA1234P1Z2 INV-007 taxable 8000.00 IGST 1440.00 CGST 0.00 SGST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 C"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:06:08.965604+00:00"
+      }
+    },
+    {
+      "id": "64d5df4a-1982-4cc2-9bba-3399f7f229da",
+      "invoice_number": "INV-008",
+      "supplier_gstin": "27METRO1234Q1Z4",
+      "supplier_name": "Metro Parts",
+      "invoice_date": "2026-10-15",
+      "category": "Value or tax mismatch",
+      "differences": [
+        "CGST: purchase ₹900.00 vs GSTR-2B ₹800.00",
+        "SGST: purchase ₹900.00 vs GSTR-2B ₹800.00"
+      ],
+      "purchase_record": {
+        "record_id": "c4070f49-2387-4bad-a629-1d43690fccb8",
+        "human_edits": [],
+        "supplier_gstin": "27METRO1234Q1Z4",
+        "supplier_name": "Metro Parts",
+        "invoice_number": "INV-008",
+        "invoice_key": "INV008",
+        "invoice_date": "2026-10-15",
+        "taxable_value": "10000.00",
+        "igst": "0.00",
+        "cgst": "900.00",
+        "sgst": "900.00",
+        "source": "00_purchase_register_oct_2026.csv (CSV, row 9)",
+        "side": "purchase"
+      },
+      "gstr_record": {
+        "record_id": "56595d3a-b4ae-4c01-aa28-841d092a3c33",
+        "human_edits": [],
+        "supplier_gstin": "27METRO1234Q1Z4",
+        "supplier_name": "Metro Parts",
+        "invoice_number": "INV-008",
+        "invoice_key": "INV008",
+        "invoice_date": "2026-10-15",
+        "taxable_value": "10000.00",
+        "igst": "0.00",
+        "cgst": "800.00",
+        "sgst": "800.00",
+        "source": "01_gstr2b_oct_2026.csv (CSV, row 7)",
+        "side": "gstr"
+      },
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "ST 1080.00 29DELTA1234P1Z2 INV-007 taxable 8000.00 IGST 1440.00 CGST 0.00 SGST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00 33SUNRI1234S1Z5 INV-010 taxable 6000.00 IGST 0.00 CGST"
+        }
+      ],
+      "finding": "The records differ, and the supplied evidence does not establish the cause.",
+      "confidence": "Unresolved",
+      "recommended_action": "Compare the original invoice, any credit or debit notes, and supplier amendments.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "c4070f49-2387-4bad-a629-1d43690fccb8",
+        "56595d3a-b4ae-4c01-aa28-841d092a3c33"
+      ],
+      "ai_analysis": {
+        "explanation": "The purchase register (E1) records CGST ₹900 and SGST ₹900 for invoice INV-008 (taxable ₹10,000), while GSTR-2B (E2) shows CGST ₹800 and SGST ₹800 for the same invoice and taxable value. The synthetic reconciliation dataset (E3) also reflects the purchase register figures (CGST ₹900, SGST ₹900). The discrepancy is a ₹100 difference per tax component, but the supplied evidence does not indicate why the GSTR-2B amounts are lower (e.g., supplier amendment, data entry error, rate change, or portal processing issue).",
+        "assessment": "unresolved",
+        "recommended_action": "Contact the supplier (GSTIN 27METRO1234Q1Z4) to confirm the correct tax amounts and check for any debit/credit notes or amendments filed after the original invoice. Also verify the GSTR-2B generation date and whether any subsequent GSTR-1/2B updates have been processed.",
+        "evidence_refs": [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "00_purchase_register_oct_2026.csv (CSV, row 9)",
+            "text": "Purchase register (extracted): GSTIN 27METRO1234Q1Z4; invoice INV-008; date 2026-10-15; taxable 10000.00; IGST 0.00; CGST 900.00; SGST 900.00."
+          },
+          {
+            "id": "E2",
+            "source": "01_gstr2b_oct_2026.csv (CSV, row 7)",
+            "text": "GSTR-2B (extracted): GSTIN 27METRO1234Q1Z4; invoice INV-008; date 2026-10-15; taxable 10000.00; IGST 0.00; CGST 800.00; SGST 800.00."
+          },
+          {
+            "id": "E3",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "ST 1080.00 29DELTA1234P1Z2 INV-007 taxable 8000.00 IGST 1440.00 CGST 0.00 SGST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00 33SUNRI1234S1Z5 INV-010 taxable 6000.00 IGST 0.00 CGST"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:06:23.807159+00:00"
+      }
+    },
+    {
+      "id": "b7289310-df8f-45a6-8c07-b9dd73a13188",
+      "invoice_number": "INV-009",
+      "supplier_gstin": "29ORBIT1234R1Z6",
+      "supplier_name": "Orbit Systems",
+      "invoice_date": "2026-10-18",
+      "category": "Missing in GSTR-2B",
+      "differences": [
+        "No matching GSTIN + invoice number in current GSTR-2B"
+      ],
+      "purchase_record": {
+        "record_id": "b7790b69-df8e-48e6-8eed-8cc48d8c9b8a",
+        "human_edits": [],
+        "supplier_gstin": "29ORBIT1234R1Z6",
+        "supplier_name": "Orbit Systems",
+        "invoice_number": "INV-009",
+        "invoice_key": "INV009",
+        "invoice_date": "2026-10-18",
+        "taxable_value": "30000.00",
+        "igst": "5400.00",
+        "cgst": "0.00",
+        "sgst": "0.00",
+        "source": "00_purchase_register_oct_2026.csv (CSV, row 10)",
+        "side": "purchase"
+      },
+      "gstr_record": null,
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "GST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00 33SUNRI1234S1Z5 INV-010 taxable 6000.00 IGST 0.00 CGST 540.00 SGST 540.00 29ABCDE1234F1Z5 INV-001 taxable 10000.00 IGST 0.00 CGST"
+        }
+      ],
+      "finding": "No corresponding entry was found in the supplied GSTR-2B statements. The cause cannot be established from the available records.",
+      "confidence": "Unresolved",
+      "recommended_action": "Verify the invoice and GSTIN with the supplier; check subsequent GSTR-2B statements.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "b7790b69-df8e-48e6-8eed-8cc48d8c9b8a"
+      ],
+      "ai_analysis": {
+        "explanation": "The purchase register (E1) records an invoice INV-009 from GSTIN 29ORBIT1234R1Z6 dated 2026-10-18 with taxable value 30000 and IGST 5400. The synthetic GST reconciliation dataset (E2) also includes this same entry (29ORBIT1234R1Z6 INV-009 taxable 30000 IGST 5400). However, the supplied sources do not include any GSTR-2B statements for the relevant period. The deterministic finding states that no corresponding entry was found in the supplied GSTR-2B statements, but since those statements are not provided in the evidence, the absence cannot be verified from the available records. Therefore, the cause of the missing entry in GSTR-2B cannot be established.",
+        "assessment": "unresolved",
+        "recommended_action": "Obtain the GSTR-2B statements for October 2026 to verify whether invoice INV-009 from GSTIN 29ORBIT1234R1Z6 is present or missing, and then investigate the reason for any discrepancy.",
+        "evidence_refs": [
+          "E1",
+          "E2"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "00_purchase_register_oct_2026.csv (CSV, row 10)",
+            "text": "Purchase register (extracted): GSTIN 29ORBIT1234R1Z6; invoice INV-009; date 2026-10-18; taxable 30000.00; IGST 5400.00; CGST 0.00; SGST 0.00."
+          },
+          {
+            "id": "E2",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "GST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00 33SUNRI1234S1Z5 INV-010 taxable 6000.00 IGST 0.00 CGST 540.00 SGST 540.00 29ABCDE1234F1Z5 INV-001 taxable 10000.00 IGST 0.00 CGST"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:06:43.885352+00:00"
+      }
+    },
+    {
+      "id": "0eb7dab8-aa44-44bf-a3fd-bfc024773810",
+      "invoice_number": "INV-010",
+      "supplier_gstin": "33SUNRI1234S1Z5",
+      "supplier_name": "Sunrise Industrial",
+      "invoice_date": "2026-10-21",
+      "category": "Missing in GSTR-2B",
+      "differences": [
+        "No matching GSTIN + invoice number in current GSTR-2B"
+      ],
+      "purchase_record": {
+        "record_id": "035c8879-a45f-4750-806c-9a7c516e08c5",
+        "human_edits": [],
+        "supplier_gstin": "33SUNRI1234S1Z5",
+        "supplier_name": "Sunrise Industrial",
+        "invoice_number": "INV-010",
+        "invoice_key": "INV010",
+        "invoice_date": "2026-10-21",
+        "taxable_value": "6000.00",
+        "igst": "0.00",
+        "cgst": "540.00",
+        "sgst": "540.00",
+        "source": "00_purchase_register_oct_2026.csv (CSV, row 11)",
+        "side": "purchase"
+      },
+      "gstr_record": null,
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "ST 900.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00 33SUNRI1234S1Z5 INV-010 taxable 6000.00 IGST 0.00 CGST 540.00 SGST 540.00 29ABCDE1234F1Z5 INV-001 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 27XYZAB5678C1Z2 INV-002 taxable 18000.00 IGST 0.00 CGS"
+        }
+      ],
+      "finding": "No corresponding entry was found in the supplied GSTR-2B statements. The cause cannot be established from the available records.",
+      "confidence": "Unresolved",
+      "recommended_action": "Verify the invoice and GSTIN with the supplier; check subsequent GSTR-2B statements.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "035c8879-a45f-4750-806c-9a7c516e08c5"
+      ],
+      "ai_analysis": {
+        "explanation": "The purchase register records an invoice INV-010 from supplier GSTIN 33SUNRI1234S1Z5 dated 2026-10-21 with taxable value 6000, CGST 540, SGST 540 [E1]. The synthetic GST reconciliation dataset also lists the same invoice under the same GSTIN with identical tax amounts [E2]. However, the supplied source records do not include any GSTR-2B statements for the relevant period. Therefore, it cannot be determined from the available evidence whether the invoice is missing from GSTR-2B due to supplier non-filing, data mismatch, timing differences, or any other reason.",
+        "assessment": "unresolved",
+        "recommended_action": "Obtain the GSTR-2B statements for October 2026 (or the relevant tax period) and verify the presence or absence of invoice INV-010 from GSTIN 33SUNRI1234S1Z5. If missing, follow up with the supplier to confirm filing status and reconcile.",
+        "evidence_refs": [
+          "E1",
+          "E2"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "00_purchase_register_oct_2026.csv (CSV, row 11)",
+            "text": "Purchase register (extracted): GSTIN 33SUNRI1234S1Z5; invoice INV-010; date 2026-10-21; taxable 6000.00; IGST 0.00; CGST 540.00; SGST 540.00."
+          },
+          {
+            "id": "E2",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "ST 900.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00 33SUNRI1234S1Z5 INV-010 taxable 6000.00 IGST 0.00 CGST 540.00 SGST 540.00 29ABCDE1234F1Z5 INV-001 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00 27XYZAB5678C1Z2 INV-002 taxable 18000.00 IGST 0.00 CGS"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:06:56.791406+00:00"
+      }
+    },
+    {
+      "id": "4bbd465d-4d3e-4064-9cea-b4cdef1cffdd",
+      "invoice_number": "INV-004",
+      "supplier_gstin": "29VERTX1234T1Z7",
+      "supplier_name": "Vertex Traders",
+      "invoice_date": "2026-10-08",
+      "category": "Missing in purchase register",
+      "differences": [
+        "No matching GSTIN + invoice number in purchase register"
+      ],
+      "purchase_record": null,
+      "gstr_record": {
+        "record_id": "952bbcbf-182e-45ef-9e60-075fddcf09a3",
+        "human_edits": [],
+        "supplier_gstin": "29VERTX1234T1Z7",
+        "supplier_name": "Vertex Traders",
+        "invoice_number": "INV-004",
+        "invoice_key": "INV004",
+        "invoice_date": "2026-10-08",
+        "taxable_value": "11000.00",
+        "igst": "1980.00",
+        "cgst": "0.00",
+        "sgst": "0.00",
+        "source": "01_gstr2b_oct_2026.csv (CSV, row 8)",
+        "side": "gstr"
+      },
+      "evidence": [
+        {
+          "file": "03_synthetic_gst_reconciliation_dataset.xlsx",
+          "page": 1,
+          "kind": "invoice",
+          "excerpt": "GST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 800.00 SGST 800.00 29VERTX1234T1Z7 INV-004 taxable 11000.00 IGST 1980.00 CGST 0.00 SGST 0.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00"
+        }
+      ],
+      "finding": "This GSTR-2B entry has no matching purchase-register invoice in the supplied period. Check whether it belongs in the register or another period.",
+      "confidence": "Unresolved",
+      "recommended_action": "Verify the original invoice, receipt, and accounting period.",
+      "review_status": "Needs review",
+      "review_note": "",
+      "record_ids": [
+        "952bbcbf-182e-45ef-9e60-075fddcf09a3"
+      ],
+      "ai_analysis": {
+        "explanation": "The GSTR-2B entry for GSTIN 29VERTX1234T1Z7 invoice INV-004 (dated 2026-10-08, taxable 11000, IGST 1980) is present in the GSTR-2B data (E1) and also appears in a synthetic GST reconciliation dataset (E2). However, the supplied sources do not include the purchase register for the period, so it cannot be determined from the evidence whether this invoice is missing from the purchase register or simply not provided in the source set.",
+        "assessment": "unresolved",
+        "recommended_action": "Obtain the purchase register for October 2026 and verify whether invoice INV-004 from GSTIN 29VERTX1234T1Z7 is recorded there. If absent, investigate whether it belongs to a different period or was omitted.",
+        "evidence_refs": [
+          "E1",
+          "E2"
+        ],
+        "sources": [
+          {
+            "id": "E1",
+            "source": "01_gstr2b_oct_2026.csv (CSV, row 8)",
+            "text": "GSTR-2B (extracted): GSTIN 29VERTX1234T1Z7; invoice INV-004; date 2026-10-08; taxable 11000.00; IGST 1980.00; CGST 0.00; SGST 0.00."
+          },
+          {
+            "id": "E2",
+            "source": "03_synthetic_gst_reconciliation_dataset.xlsx page 1",
+            "text": "GST 0.00 27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 800.00 SGST 800.00 29VERTX1234T1Z7 INV-004 taxable 11000.00 IGST 1980.00 CGST 0.00 SGST 0.00 29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00"
+          }
+        ],
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "generated_at": "2026-11-02T23:07:15.841493+00:00"
+      }
+    }
+  ],
+  "purchase_records": [
+    {
+      "record_id": "5d6d5e07-ee97-40d2-a13c-8f780ec01286",
+      "human_edits": [],
+      "supplier_gstin": "29ABCDE1234F1Z5",
+      "supplier_name": "ABC Technologies",
+      "invoice_number": "INV-001",
+      "invoice_key": "INV001",
+      "invoice_date": "2026-10-03",
+      "taxable_value": "10000.00",
+      "igst": "0.00",
+      "cgst": "900.00",
+      "sgst": "900.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 2)"
+    },
+    {
+      "record_id": "a32e749e-0bae-4ea5-b460-cd6c7e675fe5",
+      "human_edits": [],
+      "supplier_gstin": "27XYZAB5678C1Z2",
+      "supplier_name": "XYZ Electronics",
+      "invoice_number": "INV-002",
+      "invoice_key": "INV002",
+      "invoice_date": "2026-10-05",
+      "taxable_value": "20000.00",
+      "igst": "0.00",
+      "cgst": "1800.00",
+      "sgst": "1800.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 3)"
+    },
+    {
+      "record_id": "86f5b6ff-12cc-4e20-89db-9a2dcdf60670",
+      "human_edits": [],
+      "supplier_gstin": "33PQRST1234A1Z6",
+      "supplier_name": "PQR Industries",
+      "invoice_number": "INV-003",
+      "invoice_key": "INV003",
+      "invoice_date": "2026-10-07",
+      "taxable_value": "15000.00",
+      "igst": "2700.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 4)"
+    },
+    {
+      "record_id": "cd43c105-4029-4bde-9764-221fa6e97904",
+      "human_edits": [],
+      "supplier_gstin": "29LMNOP1234B1Z4",
+      "supplier_name": "LMN Supplies",
+      "invoice_number": "INV-005",
+      "invoice_key": "INV005",
+      "invoice_date": "2026-10-09",
+      "taxable_value": "25000.00",
+      "igst": "4500.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 5)"
+    },
+    {
+      "record_id": "5ea411ce-a8b9-4bba-85bd-e3c71e032f54",
+      "human_edits": [],
+      "supplier_gstin": "29LMNOP1234B1Z4",
+      "supplier_name": "LMN Supplies",
+      "invoice_number": "INV-005",
+      "invoice_key": "INV005",
+      "invoice_date": "2026-10-09",
+      "taxable_value": "25000.00",
+      "igst": "4500.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 6)"
+    },
+    {
+      "record_id": "7b132a54-542e-45b1-a6ec-876e1d2b5016",
+      "human_edits": [],
+      "supplier_gstin": "27NORTH1234K1Z8",
+      "supplier_name": "Northstar Components",
+      "invoice_number": "INV/006",
+      "invoice_key": "INV006",
+      "invoice_date": "2026-10-11",
+      "taxable_value": "12000.00",
+      "igst": "0.00",
+      "cgst": "1080.00",
+      "sgst": "1080.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 7)"
+    },
+    {
+      "record_id": "0d18e3fd-90bc-4ecc-a244-7e03318a7f2c",
+      "human_edits": [],
+      "supplier_gstin": "29DELTA1234P1Z2",
+      "supplier_name": "Delta Tools",
+      "invoice_number": "INV-007",
+      "invoice_key": "INV007",
+      "invoice_date": "2026-10-13",
+      "taxable_value": "8000.00",
+      "igst": "1440.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 8)"
+    },
+    {
+      "record_id": "c4070f49-2387-4bad-a629-1d43690fccb8",
+      "human_edits": [],
+      "supplier_gstin": "27METRO1234Q1Z4",
+      "supplier_name": "Metro Parts",
+      "invoice_number": "INV-008",
+      "invoice_key": "INV008",
+      "invoice_date": "2026-10-15",
+      "taxable_value": "10000.00",
+      "igst": "0.00",
+      "cgst": "900.00",
+      "sgst": "900.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 9)"
+    },
+    {
+      "record_id": "b7790b69-df8e-48e6-8eed-8cc48d8c9b8a",
+      "human_edits": [],
+      "supplier_gstin": "29ORBIT1234R1Z6",
+      "supplier_name": "Orbit Systems",
+      "invoice_number": "INV-009",
+      "invoice_key": "INV009",
+      "invoice_date": "2026-10-18",
+      "taxable_value": "30000.00",
+      "igst": "5400.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 10)"
+    },
+    {
+      "record_id": "035c8879-a45f-4750-806c-9a7c516e08c5",
+      "human_edits": [],
+      "supplier_gstin": "33SUNRI1234S1Z5",
+      "supplier_name": "Sunrise Industrial",
+      "invoice_number": "INV-010",
+      "invoice_key": "INV010",
+      "invoice_date": "2026-10-21",
+      "taxable_value": "6000.00",
+      "igst": "0.00",
+      "cgst": "540.00",
+      "sgst": "540.00",
+      "source": "00_purchase_register_oct_2026.csv (CSV, row 11)"
+    }
+  ],
+  "gstr_records": [
+    {
+      "record_id": "a480d28d-8fb9-4104-9bf0-974d6706c105",
+      "human_edits": [],
+      "supplier_gstin": "29ABCDE1234F1Z5",
+      "supplier_name": "ABC Technologies",
+      "invoice_number": "INV-001",
+      "invoice_key": "INV001",
+      "invoice_date": "2026-10-03",
+      "taxable_value": "10000.00",
+      "igst": "0.00",
+      "cgst": "900.00",
+      "sgst": "900.00",
+      "source": "01_gstr2b_oct_2026.csv (CSV, row 2)"
+    },
+    {
+      "record_id": "7c765a98-4248-497a-88f7-d7636a6ff1e5",
+      "human_edits": [],
+      "supplier_gstin": "27XYZAB5678C1Z2",
+      "supplier_name": "XYZ Electronics",
+      "invoice_number": "INV-002",
+      "invoice_key": "INV002",
+      "invoice_date": "2026-10-05",
+      "taxable_value": "18000.00",
+      "igst": "0.00",
+      "cgst": "1620.00",
+      "sgst": "1620.00",
+      "source": "01_gstr2b_oct_2026.csv (CSV, row 3)"
+    },
+    {
+      "record_id": "cd26b867-5e2b-4c28-87d6-14ae3fa701e1",
+      "human_edits": [],
+      "supplier_gstin": "29LMNOP1234B1Z4",
+      "supplier_name": "LMN Supplies",
+      "invoice_number": "INV-005",
+      "invoice_key": "INV005",
+      "invoice_date": "2026-10-09",
+      "taxable_value": "25000.00",
+      "igst": "4500.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "01_gstr2b_oct_2026.csv (CSV, row 4)"
+    },
+    {
+      "record_id": "f5b3f6dc-b828-41f7-8eea-29f09e5693cd",
+      "human_edits": [],
+      "supplier_gstin": "27NORTH1234K1Z8",
+      "supplier_name": "Northstar Components",
+      "invoice_number": "INV-006",
+      "invoice_key": "INV006",
+      "invoice_date": "2026-10-11",
+      "taxable_value": "12000.00",
+      "igst": "0.00",
+      "cgst": "1080.00",
+      "sgst": "1080.00",
+      "source": "01_gstr2b_oct_2026.csv (CSV, row 5)"
+    },
+    {
+      "record_id": "ae6cb17e-27ca-4675-a269-3d12854d3b95",
+      "human_edits": [],
+      "supplier_gstin": "27DELTA1234P1Z2",
+      "supplier_name": "Delta Tools",
+      "invoice_number": "INV-007",
+      "invoice_key": "INV007",
+      "invoice_date": "2026-10-13",
+      "taxable_value": "8000.00",
+      "igst": "1440.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "01_gstr2b_oct_2026.csv (CSV, row 6)"
+    },
+    {
+      "record_id": "56595d3a-b4ae-4c01-aa28-841d092a3c33",
+      "human_edits": [],
+      "supplier_gstin": "27METRO1234Q1Z4",
+      "supplier_name": "Metro Parts",
+      "invoice_number": "INV-008",
+      "invoice_key": "INV008",
+      "invoice_date": "2026-10-15",
+      "taxable_value": "10000.00",
+      "igst": "0.00",
+      "cgst": "800.00",
+      "sgst": "800.00",
+      "source": "01_gstr2b_oct_2026.csv (CSV, row 7)"
+    },
+    {
+      "record_id": "952bbcbf-182e-45ef-9e60-075fddcf09a3",
+      "human_edits": [],
+      "supplier_gstin": "29VERTX1234T1Z7",
+      "supplier_name": "Vertex Traders",
+      "invoice_number": "INV-004",
+      "invoice_key": "INV004",
+      "invoice_date": "2026-10-08",
+      "taxable_value": "11000.00",
+      "igst": "1980.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "01_gstr2b_oct_2026.csv (CSV, row 8)"
+    }
+  ],
+  "later_records": [
+    {
+      "record_id": "01b94c9b-17ff-41bb-94bf-5aff412e80fd",
+      "human_edits": [],
+      "supplier_gstin": "29ABCDE1234F1Z5",
+      "supplier_name": "ABC Technologies",
+      "invoice_number": "INV-001",
+      "invoice_key": "INV001",
+      "invoice_date": "2026-10-03",
+      "taxable_value": "10000.00",
+      "igst": "0.00",
+      "cgst": "900.00",
+      "sgst": "900.00",
+      "source": "02_gstr2b_oct_2026.csv (CSV, row 2)"
+    },
+    {
+      "record_id": "842c89b6-6d95-42af-b59c-1a57ca2cdc3a",
+      "human_edits": [],
+      "supplier_gstin": "27XYZAB5678C1Z2",
+      "supplier_name": "XYZ Electronics",
+      "invoice_number": "INV-002",
+      "invoice_key": "INV002",
+      "invoice_date": "2026-10-05",
+      "taxable_value": "18000.00",
+      "igst": "0.00",
+      "cgst": "1620.00",
+      "sgst": "1620.00",
+      "source": "02_gstr2b_oct_2026.csv (CSV, row 3)"
+    },
+    {
+      "record_id": "12e248b1-7daa-402a-91cd-c7fff64a94fe",
+      "human_edits": [],
+      "supplier_gstin": "29LMNOP1234B1Z4",
+      "supplier_name": "LMN Supplies",
+      "invoice_number": "INV-005",
+      "invoice_key": "INV005",
+      "invoice_date": "2026-10-09",
+      "taxable_value": "25000.00",
+      "igst": "4500.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "02_gstr2b_oct_2026.csv (CSV, row 4)"
+    },
+    {
+      "record_id": "b879bfc1-a47d-425e-9495-5d90f417bb32",
+      "human_edits": [],
+      "supplier_gstin": "27NORTH1234K1Z8",
+      "supplier_name": "Northstar Components",
+      "invoice_number": "INV-006",
+      "invoice_key": "INV006",
+      "invoice_date": "2026-10-11",
+      "taxable_value": "12000.00",
+      "igst": "0.00",
+      "cgst": "1080.00",
+      "sgst": "1080.00",
+      "source": "02_gstr2b_oct_2026.csv (CSV, row 5)"
+    },
+    {
+      "record_id": "d82360de-ebd1-4d09-9fa6-89912dec5451",
+      "human_edits": [],
+      "supplier_gstin": "27DELTA1234P1Z2",
+      "supplier_name": "Delta Tools",
+      "invoice_number": "INV-007",
+      "invoice_key": "INV007",
+      "invoice_date": "2026-10-13",
+      "taxable_value": "8000.00",
+      "igst": "1440.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "02_gstr2b_oct_2026.csv (CSV, row 6)"
+    },
+    {
+      "record_id": "64f37c34-e41e-45b8-a53b-06aa532b82b1",
+      "human_edits": [],
+      "supplier_gstin": "27METRO1234Q1Z4",
+      "supplier_name": "Metro Parts",
+      "invoice_number": "INV-008",
+      "invoice_key": "INV008",
+      "invoice_date": "2026-10-15",
+      "taxable_value": "10000.00",
+      "igst": "0.00",
+      "cgst": "800.00",
+      "sgst": "800.00",
+      "source": "02_gstr2b_oct_2026.csv (CSV, row 7)"
+    },
+    {
+      "record_id": "1275d78b-eb56-4317-90e1-3fb120a7ee25",
+      "human_edits": [],
+      "supplier_gstin": "29VERTX1234T1Z7",
+      "supplier_name": "Vertex Traders",
+      "invoice_number": "INV-004",
+      "invoice_key": "INV004",
+      "invoice_date": "2026-10-08",
+      "taxable_value": "11000.00",
+      "igst": "1980.00",
+      "cgst": "0.00",
+      "sgst": "0.00",
+      "source": "02_gstr2b_oct_2026.csv (CSV, row 8)"
+    }
+  ],
+  "documents": [
+    {
+      "filename": "03_synthetic_gst_reconciliation_dataset.xlsx",
+      "kind": "invoice",
+      "pages": [
+        {
+          "page": 1,
+          "text": "29ABCDE1234F1Z5 INV-001 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00\n27XYZAB5678C1Z2 INV-002 taxable 20000.00 IGST 0.00 CGST 1800.00 SGST 1800.00\n33PQRST1234A1Z6 INV-003 taxable 15000.00 IGST 2700.00 CGST 0.00 SGST 0.00\n29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00\n29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00\n27NORTH1234K1Z8 INV/006 taxable 12000.00 IGST 0.00 CGST 1080.00 SGST 1080.00\n29DELTA1234P1Z2 INV-007 taxable 8000.00 IGST 1440.00 CGST 0.00 SGST 0.00\n27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00\n29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00\n33SUNRI1234S1Z5 INV-010 taxable 6000.00 IGST 0.00 CGST 540.00 SGST 540.00\n29ABCDE1234F1Z5 INV-001 taxable 10000.00 IGST 0.00 CGST 900.00 SGST 900.00\n27XYZAB5678C1Z2 INV-002 taxable 18000.00 IGST 0.00 CGST 1620.00 SGST 1620.00\n29LMNOP1234B1Z4 INV-005 taxable 25000.00 IGST 4500.00 CGST 0.00 SGST 0.00\n27NORTH1234K1Z8 INV-006 taxable 12000.00 IGST 0.00 CGST 1080.00 SGST 1080.00\n27DELTA1234P1Z2 INV-007 taxable 8000.00 IGST 1440.00 CGST 0.00 SGST 0.00\n27METRO1234Q1Z4 INV-008 taxable 10000.00 IGST 0.00 CGST 800.00 SGST 800.00\n29VERTX1234T1Z7 INV-004 taxable 11000.00 IGST 1980.00 CGST 0.00 SGST 0.00\n29ORBIT1234R1Z6 INV-009 taxable 30000.00 IGST 5400.00 CGST 0.00 SGST 0.00"
+        }
+      ]
+    }
+  ],
+  "analysis_mode": "OpenRouter",
+  "files": [
+    "01_gstr2b_oct_2026.csv",
+    "02_gstr2b_oct_2026.csv",
+    "00_purchase_register_oct_2026.csv",
+    "03_synthetic_gst_reconciliation_dataset.xlsx"
+  ],
+  "created_at": "2026-11-02T23:04:43.185268+00:00"
+}
